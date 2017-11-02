@@ -2,10 +2,11 @@ var x = true;
 var o =false;
 
 //reset onClick
-$("#reset").click(reset());
+$("#reset").click(reset);
 
 function reset(){
-  $("td").addClass("clear");
+  $("td").removeClass("X").removeClass("O").addClass("clear");
+  $("td").html("");
   $(".playerTurn").html("It is X's turn")
   x = true;
   o = false;
