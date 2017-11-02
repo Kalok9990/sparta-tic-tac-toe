@@ -3,37 +3,40 @@ var o =false;
 
 //reset onClick
 $("#reset").click(reset());
-debugger
+
 function reset(){
-  $("td").removeClass("X");
-  $("td").removeClass("O");
+  $("td").addClass("clear");
   $(".playerTurn").html("It is X's turn")
   x = true;
   o = false;
 }
 
-changeTurn();
 //playerturn
 function changeTurn(){
   x = !x;
   o = !o;
 }
+
 //onclick add X or O via addClass
-$("td").click(addClass());
+$("td").click(addClass);
 
 function addClass(){
   if(x === true){
     $("td").each(function(index, td){
-      $(td[index]).addClass("X");
+      $(this).removeClass("clear").addClass("X");
+      $(this).html("X");
+      $(".playerTurn").html("It is O's turn");
     })
-    x = false;
-    o = true;
+    console.log("X finished turn");
+    changeTurn();
   }else if(o === true){
     $("td").each(function(index, td){
-      $(td[index]).addClass("O");
+      $(this).removeClass("clear").addClass("O");
+      $(this).html("O");
+      $(".playerTurn").html("It is X's turn");
     })
-    o = false;
-    x = true;
+    console.log("O finished turn");
+    changeTurn();
   }
 }
 
