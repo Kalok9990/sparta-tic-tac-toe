@@ -3,7 +3,7 @@ var o =false;
 
 //reset onClick
 $("#reset").click(reset());
-
+debugger
 function reset(){
   $("td").removeClass("X");
   $("td").removeClass("O");
@@ -17,7 +17,6 @@ changeTurn();
 function changeTurn(){
   x = !x;
   o = !o;
-  debugger
 }
 //onclick add X or O via addClass
 $("td").click(addClass());
