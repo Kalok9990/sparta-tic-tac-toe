@@ -6,7 +6,7 @@ var valid = false;
 $("#reset").click(reset);
 
 function reset(){
-  $("td").removeClass("X").removeClass("O").addClass("clear");
+  $("td").removeClass("X").removeClass("O");
   $("td").html("");
   $(".playerTurn").html("It is X's turn")
   x = true;
@@ -21,32 +21,12 @@ function changeTurn(){
 
 //check validation
 function getValid(td){
-  if($("td").hasClass("X" || "O")){
-    valid = false;
-  }else{
+  if($("td").hasClass("")){
     valid = true;
+  }else{
+    valid = false;
   }
 }
-
-$('.tile').on('click', function Xplay() {
-
-	validatePlay(this);
-
-	if (playValid) {
-		$(this).removeClass('free');
-		$(this).addClass('played');
-		$(this).addClass('X-play');
-		$(this).html("X");
-
-		checkDraw();
-		checkWin();
-		Oplay();
-
-	} else {
-		alert("That square has already been played. Please choose another square");
-	}
-
-})
 
 //onclick add X or O via addClass
 $("td").click(addMove);
@@ -54,6 +34,7 @@ $("td").click(addMove);
 function addMove(){
   if(x === true){
     getValid(this);
+    debugger
     if(valid){
       $(this).removeClass("clear").addClass("X");
       $(this).html("X");
@@ -65,6 +46,7 @@ function addMove(){
     }
   }else if(o === true){
     getValid(this);
+    debugger
     if(valid){
       $(this).removeClass("clear").addClass("O");
       $(this).html("O");
