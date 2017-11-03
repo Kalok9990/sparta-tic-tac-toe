@@ -6,11 +6,12 @@ var ochosen = [];
 
 //reset onClick
 $("#reset").click(reset);
-
 function reset(){
   $("td").removeClass("X").removeClass("O");
   $("td").html("");
   $(".playerTurn").html("It is X's turn")
+  xchosen = [];
+  ochosen = [];
   x = true;
   o = false;
 }
