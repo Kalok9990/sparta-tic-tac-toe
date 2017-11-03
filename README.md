@@ -16,3 +16,9 @@ Your deliverables:-
 7) The clear button should clear the board
 8) When a winning condition is present you should display a winner, either X or Y
 9) The program should use functions, loops, JQuery selectors and JQuery events
+
+# Difficulties
+I had problems with the winning conditions and it still doesn't work. Jquery isn't easy however I feel like it s because it is something new so I am not used to it yet.
+
+# Pleased
+Im getting used to Jquery quite quickly

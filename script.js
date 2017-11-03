@@ -61,6 +61,7 @@ function addMove(){
     }
   }
   checkDraw();
+  winningCheck();
 }
 
 //draw conditions
