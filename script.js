@@ -70,6 +70,7 @@ function winningCheck(chosen, player){
       if(jQuery.inArray(value[1],chosen) !== -1){
         if(jQuery.inArray(value[2],chosen) !== -1){
           alert(player + " has won!");
+          reset();
         }
       }
     }
@@ -82,6 +83,6 @@ function placePatt(td, pattern1, pattern2, array){
   $(td).html(pattern1);
   $(".playerTurn").html("It is "+pattern2+"'s turn");
   array.push(parseFloat($(td).attr("data-num")));
-  winningCheck(array, pattern1);
   changeTurn();
+  winningCheck(array, pattern1);
 }
