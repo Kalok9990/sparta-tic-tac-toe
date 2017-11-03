@@ -37,28 +37,14 @@ function addMove(){
   if(x === true){
     getValid(this);
     if(valid){
-      $(this).addClass("X");
-      $(this).html("X");
-      $(".playerTurn").html("It is O's turn");
-      xchosen.push(parseFloat($(this).attr("data-num")));
-      debugger
-      console.log("X finished turn");
-      winningCheck(xchosen, "X");
-      changeTurn();
+      placePatt(this, "X", "O", xchosen);
     }else{
-      alert("Invalid move, please try again.")
+      alert("Invalid move, please try again.");
     }
   }else if(o === true){
     getValid(this);
-    debugger
     if(valid){
-      $(this).addClass("O");
-      $(this).html("O");
-      $(".playerTurn").html("It is X's turn");
-      ochosen.push(parseFloat($(this).attr("data-num")));
-      console.log("O finished turn");
-      winningCheck(ochosen, "O");
-      changeTurn();
+      placePatt(this, "O", "X", ochosen);
     }else{
       alert("Invalid move, please try again.")
     }
@@ -78,7 +64,6 @@ function checkDraw(){
 
 function winningCheck(chosen, player){
   var winCombo = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
-  debugger
   $(winCombo).each(function(index, value){
     if(jQuery.inArray(value[0],chosen) !== -1){
       if(jQuery.inArray(value[1],chosen) !== -1){
@@ -88,4 +73,14 @@ function winningCheck(chosen, player){
       }
     }
   })
+}
+
+function placePatt(td, pattern1, pattern2, array){
+  debugger
+  $(td).addClass(pattern1);
+  $(td).html(pattern1);
+  $(".playerTurn").html("It is "+pattern2+"'s turn");
+  array.push(parseFloat($(td).attr("data-num")));
+  winningCheck(array, pattern1);
+  changeTurn();
 }
