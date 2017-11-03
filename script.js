@@ -23,7 +23,7 @@ function changeTurn(){
 
 //check validation
 function getValid(td){
-  if(($("td").html().length)>0){
+  if(($(td).html().length)>0){
     valid = false;
   }else{
     valid = true;
