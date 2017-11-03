@@ -60,7 +60,7 @@ function addMove(){
   checkDraw();
 }
 
-//draw condition
+//win conditions
 function checkDraw(){
   if (!$("td").hasClass("")){
     draw = prompt("It's a draw. Would you like to play again? (y or n)");
