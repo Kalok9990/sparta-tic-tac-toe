@@ -35,14 +35,15 @@ $("td").click(addMove);
 
 function addMove(){
   if(x === true){
-    debugger
     getValid(this);
     if(valid){
       $(this).addClass("X");
       $(this).html("X");
       $(".playerTurn").html("It is O's turn");
-      xchosen.push($(this));
+      xchosen.push(parseFloat($(this).attr("data-num")));
+      debugger
       console.log("X finished turn");
+      winningCheck(xchosen, "X");
       changeTurn();
     }else{
       alert("Invalid move, please try again.")
@@ -54,14 +55,15 @@ function addMove(){
       $(this).addClass("O");
       $(this).html("O");
       $(".playerTurn").html("It is X's turn");
+      ochosen.push(parseFloat($(this).attr("data-num")));
       console.log("O finished turn");
+      winningCheck(ochosen, "O");
       changeTurn();
     }else{
       alert("Invalid move, please try again.")
     }
   }
   checkDraw();
-  winningCheck();
 }
 
 //draw conditions
@@ -74,21 +76,16 @@ function checkDraw(){
   }
 }
 
-function winningCheck(){
-  var winCombo = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-      $(winCombo).each(function(index, value){
-        if (jQuery.inArray(value[0],xchosen) !==-1){
-          if (jQuery.inArray(value[1],xchosen) !==-1){
-            if (jQuery.inArray(value[2],xchosen) !==-1){
-              alert('PLayer X has won!')
-            }
-          }
-        }else if(jQuery.inArray(value[0], ochosen)!==-1){
-          if (jQuery.inArray(value[1], ochosen)!==-1){
-            if (jQuery.inArray(value[2], ochosen)!==-1){
-              alert('Player O has won!')
-            }
-          }
+function winningCheck(chosen, player){
+  var winCombo = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  debugger
+  $(winCombo).each(function(index, value){
+    if(jQuery.inArray(value[0],chosen) !== -1){
+      if(jQuery.inArray(value[1],chosen) !== -1){
+        if(jQuery.inArray(value[2],chosen) !== -1){
+          alert(player + " has won!");
         }
-      })
+      }
     }
+  })
+}
